@@ -1,5 +1,5 @@
 /*==================== GOOGLE FONTS ====================*/
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500&family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap");
 
 /*==================== VARIABLES CSS ====================*/
 :root {
@@ -340,15 +340,30 @@ body.dark-theme .header { background-color: rgba(244, 241, 235, .85); }
 
 .home__title {
     font-family: var(--display-font);
-    font-size: var(--display-xl);
+    font-size: clamp(2.5rem, 7vw, 6rem);
     font-weight: var(--font-bold);
-    line-height: .9;
-    letter-spacing: -0.045em;
+    line-height: 1.02;
+    letter-spacing: -0.035em;
     color: var(--title-color);
-    margin-bottom: 1.5rem;
-    text-transform: uppercase;
+    margin-bottom: 2.5rem;
+    text-transform: none;
+    max-width: 22ch;
 }
-.home__title::after { content: "."; color: var(--title-color); }
+
+.home__title-serif {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-variation-settings: "opsz" 144;
+    letter-spacing: -0.04em;
+    color: var(--title-color);
+    padding-right: .05em;
+}
+
+.home__title-accent {
+    color: var(--muted);
+    font-weight: var(--font-bold);
+}
 
 .home__subtitle {
     display: inline-block;
@@ -498,7 +513,64 @@ body.dark-theme .header { background-color: rgba(244, 241, 235, .85); }
     border-bottom-color: var(--title-color);
 }
 
-/*==================== ABOUT ====================*/
+/*==================== ABOUT — UNDER MAINTENANCE ====================*/
+.about__maintenance {
+    border: 1px solid var(--hairline);
+    padding: clamp(3rem, 8vw, 6rem) clamp(1.5rem, 5vw, 4rem);
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    min-height: 50vh;
+    justify-content: center;
+    background:
+        repeating-linear-gradient(
+            45deg,
+            transparent 0,
+            transparent 14px,
+            var(--hairline-soft) 14px,
+            var(--hairline-soft) 15px
+        );
+}
+
+.about__maintenance-label {
+    font-family: var(--body-font);
+    font-size: var(--smaller-font-size);
+    letter-spacing: .25em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: var(--font-medium);
+}
+
+.about__maintenance-title {
+    font-family: var(--display-font);
+    font-size: clamp(2.5rem, 8vw, 6rem);
+    font-weight: var(--font-bold);
+    text-transform: uppercase;
+    letter-spacing: -0.04em;
+    line-height: .95;
+    color: var(--title-color);
+    margin: 0;
+}
+.about__maintenance-title em {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-variation-settings: "opsz" 144;
+    text-transform: lowercase;
+    letter-spacing: -0.03em;
+    color: var(--muted);
+}
+
+.about__maintenance-note {
+    font-family: var(--body-font);
+    font-size: 1rem;
+    color: var(--text-color);
+    max-width: 36ch;
+    margin: 0;
+}
+
+/*==================== ABOUT (legacy, kept for theme parity) ====================*/
 .about__container {
     grid-template-columns: 1fr;
     gap: 3rem;
