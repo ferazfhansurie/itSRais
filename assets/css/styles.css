@@ -162,6 +162,27 @@ img { max-width: 100%; height: auto; display: block; }
     margin-top: .25rem;
 }
 
+.section__behance {
+    display: inline-flex;
+    align-items: center;
+    gap: .55rem;
+    margin-top: 1.25rem;
+    padding: .55rem 1rem .55rem .85rem;
+    border: 1px solid var(--hairline);
+    border-radius: 999px;
+    font-family: var(--body-font);
+    font-size: .82rem;
+    font-weight: var(--font-medium);
+    letter-spacing: .04em;
+    color: var(--title-color);
+    background: var(--surface);
+    transition: background-color .3s ease, color .3s ease, border-color .3s ease, transform .3s ease;
+    align-self: flex-start;
+}
+.section__behance i { font-size: 1.05rem; color: var(--accent); transition: color .3s ease; }
+.section__behance:hover { background: var(--accent); color: var(--surface); border-color: var(--accent); transform: translateY(-1px); }
+.section__behance:hover i { color: var(--surface); }
+
 /*==================== LAYOUT ====================*/
 .container {
     max-width: 1320px;
