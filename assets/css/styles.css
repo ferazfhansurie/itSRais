@@ -5,19 +5,19 @@
 :root {
     --header-height: 4.25rem;
 
-    /*========== Default theme — reversed cobalt + cream (bg blue, type cream) ==========*/
-    --bg:               #1A1AE6;
-    --surface:          #2424CC;
-    --surface-2:        #1414B5;
-    --hairline:         rgba(234, 215, 183, 0.22);
-    --hairline-soft:    rgba(234, 215, 183, 0.12);
+    /*========== Default theme — midnight cobalt + cream (deepened bg, easier on the eyes) ==========*/
+    --bg:               #11115E;
+    --surface:          #181874;
+    --surface-2:        #0B0B45;
+    --hairline:         rgba(234, 215, 183, 0.20);
+    --hairline-soft:    rgba(234, 215, 183, 0.10);
 
     --title-color:      #EAD7B7;
     --text-color:       #EAD7B7;
     --text-color-light: #C9B895;
-    --muted:            #B5A682;
+    --muted:            #A89776;
 
-    --accent:           #F4E5C8;        /* lighter cream — for hovers, dots, dividers that need to pop on cobalt */
+    --accent:           #F4E5C8;        /* lighter cream — pops as hover/dot/divider on the midnight base */
     --accent-soft:      #DBC9A4;
     --accent-tint:      rgba(244, 229, 200, 0.10);
     --accent-deep:      #FFFFFF;
@@ -213,7 +213,7 @@ img { max-width: 100%; height: auto; display: block; }
     bottom: 0;
     left: 0;
     z-index: var(--z-fixed);
-    background-color: rgba(26, 26, 230, .82);
+    background-color: rgba(17, 17, 94, .85);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
     border-top: 1px solid var(--hairline);
@@ -871,13 +871,13 @@ body.dark-theme .header { background-color: rgba(10, 10, 31, .85); }
 }
 
 .project__description {
-    color: rgba(26, 26, 230, .82);
+    color: rgba(17, 17, 94, .85);
     max-width: 44ch;
     line-height: 1.6;
     margin: 0 0 .75rem;
 }
 
-.project__bg .section__eyebrow { color: rgba(26, 26, 230, .65); }
+.project__bg .section__eyebrow { color: rgba(17, 17, 94, .65); }
 .project__bg .section__title { color: var(--bg); }
 .project__bg .section__title::after { background: var(--bg); }
 
