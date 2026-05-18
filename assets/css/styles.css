@@ -254,28 +254,31 @@ body.dark-theme .header { background-color: rgba(10, 10, 31, .85); }
         width: 100%;
         background-color: var(--surface);
         border-top: 1px solid var(--hairline);
-        padding: .65rem 1rem .85rem;
+        padding: .55rem .4rem .75rem;
         border-radius: 0;
         transition: .35s cubic-bezier(.4,0,.2,1);
     }
 
     .nav__list {
-        grid-template-columns: repeat(3, 1fr);
-        gap: .35rem 1rem;
+        grid-template-columns: repeat(6, 1fr);
+        gap: 0 .25rem;
     }
 
     .nav__link {
         gap: .15rem;
-        font-size: .62rem;
-        letter-spacing: .12em;
+        font-size: .52rem;
+        letter-spacing: .04em;
+        text-align: center;
+        line-height: 1.05;
+        word-break: break-word;
     }
 
-    .nav__icon { font-size: .95rem; }
+    .nav__icon { font-size: 1rem; }
 
     .active-link::before {
         width: 3px;
         height: 3px;
-        margin-bottom: .15rem;
+        margin-bottom: .12rem;
     }
 }
 
