@@ -5,22 +5,22 @@
 :root {
     --header-height: 4.25rem;
 
-    /*========== Light theme (default) — Swiss / Apple minimal ==========*/
-    --bg:               #FAFAF7;
-    --surface:          #FFFFFF;
-    --surface-2:        #F1EFEA;
-    --hairline:         #E3E0D8;
-    --hairline-soft:    #ECE9E1;
+    /*========== Default theme — reversed cobalt + cream (bg blue, type cream) ==========*/
+    --bg:               #1A1AE6;
+    --surface:          #2424CC;
+    --surface-2:        #1414B5;
+    --hairline:         rgba(234, 215, 183, 0.22);
+    --hairline-soft:    rgba(234, 215, 183, 0.12);
 
-    --title-color:      #0A0A0A;
-    --text-color:       #44423E;
-    --text-color-light: #8A867E;
-    --muted:            #6F6B62;
+    --title-color:      #EAD7B7;
+    --text-color:       #EAD7B7;
+    --text-color-light: #C9B895;
+    --muted:            #B5A682;
 
-    --accent:           #1F3A2E;        /* deep emerald, sampled from Rais's portfolio PDF */
-    --accent-soft:      #355042;
-    --accent-tint:      #E6EDE8;
-    --accent-deep:      #122A20;
+    --accent:           #F4E5C8;        /* lighter cream — for hovers, dots, dividers that need to pop on cobalt */
+    --accent-soft:      #DBC9A4;
+    --accent-tint:      rgba(244, 229, 200, 0.10);
+    --accent-deep:      #FFFFFF;
 
     /* Legacy tokens kept for parity with any orphan markup */
     --first-color:        var(--accent);
@@ -61,23 +61,23 @@
     --z-tooltip: 10; --z-fixed: 100; --z-modal: 1000;
 }
 
-/*========== Dark theme override (toggle inverts the system) ==========*/
+/*========== Dark theme override — deep navy with cream accent ==========*/
 body.dark-theme {
-    --bg:               #0B0B0B;
-    --surface:          #121212;
-    --surface-2:        #181818;
-    --hairline:         #262626;
-    --hairline-soft:    #1E1E1E;
+    --bg:               #0A0A1F;
+    --surface:          #11112A;
+    --surface-2:        #181838;
+    --hairline:         rgba(234, 215, 183, 0.22);
+    --hairline-soft:    rgba(234, 215, 183, 0.12);
 
-    --title-color:      #F4F2EE;
-    --text-color:       #B7B3AC;
-    --text-color-light: #6F6B64;
-    --muted:            #8A8782;
+    --title-color:      #EAD7B7;
+    --text-color:       #D6C29C;
+    --text-color-light: #9C8E72;
+    --muted:            #B5A682;
 
-    --accent:           #BFE0C7;
-    --accent-soft:      #9CC7A5;
-    --accent-tint:      #1B2A22;
-    --accent-deep:      #DCEAE0;
+    --accent:           #EAD7B7;
+    --accent-soft:      #C9B895;
+    --accent-tint:      rgba(234, 215, 183, 0.10);
+    --accent-deep:      #F2E2C2;
 }
 
 /*==================== BASE ====================*/
@@ -148,10 +148,22 @@ img { max-width: 100%; height: auto; display: block; }
 .section__title {
     font-family: var(--display-font);
     font-size: var(--display-md);
-    font-weight: var(--font-semi-bold);
+    font-weight: 800;
     color: var(--title-color);
     letter-spacing: -0.035em;
     line-height: 1.02;
+    position: relative;
+    padding-bottom: 1rem;
+}
+
+.section__title::after {
+    content: "";
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: 1px;
+    background: var(--accent);
+    margin-top: 1rem;
 }
 
 .section__intro {
@@ -201,14 +213,14 @@ img { max-width: 100%; height: auto; display: block; }
     bottom: 0;
     left: 0;
     z-index: var(--z-fixed);
-    background-color: rgba(250, 250, 247, .82);
+    background-color: rgba(26, 26, 230, .82);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
     border-top: 1px solid var(--hairline);
     transition: background-color .4s ease, border-color .4s ease;
 }
 
-body.dark-theme .header { background-color: rgba(11, 11, 11, .82); }
+body.dark-theme .header { background-color: rgba(10, 10, 31, .85); }
 
 .nav {
     max-width: 1320px;
@@ -323,12 +335,49 @@ body.dark-theme .header { background-color: rgba(11, 11, 11, .82); }
     border-bottom: 1px solid var(--hairline);
     padding-bottom: 1rem;
     flex-wrap: wrap;
+    align-items: center;
 }
+
+.home__socials {
+    margin-left: auto;
+    display: inline-flex;
+    gap: .6rem;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.home__social {
+    display: inline-flex;
+    align-items: center;
+    gap: .4rem;
+    padding: .35rem .8rem;
+    border: 1px solid var(--hairline);
+    border-radius: 999px;
+    font-size: .68rem;
+    letter-spacing: .18em;
+    color: var(--title-color);
+    background: transparent;
+    transition: background-color .25s ease, color .25s ease, border-color .25s ease;
+}
+
+.home__social i {
+    font-size: 1rem;
+    color: var(--accent);
+    transition: color .25s ease;
+}
+
+.home__social:hover {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--bg);
+}
+
+.home__social:hover i { color: var(--bg); }
 
 .home__title {
     font-family: var(--display-font);
     font-size: var(--display-xl);
-    font-weight: var(--font-semi-bold);
+    font-weight: 800;
     letter-spacing: -0.045em;
     line-height: 1.02;
     color: var(--title-color);
@@ -503,7 +552,7 @@ body.dark-theme .header { background-color: rgba(11, 11, 11, .82); }
 .portfolio__title {
     font-family: var(--display-font);
     font-size: clamp(1.75rem, 3vw, 2.5rem);
-    font-weight: var(--font-semi-bold);
+    font-weight: 700;
     letter-spacing: -0.025em;
     color: var(--title-color);
     line-height: 1.05;
@@ -653,7 +702,7 @@ body.dark-theme .header { background-color: rgba(11, 11, 11, .82); }
 .capabilities__title {
     font-family: var(--display-font);
     font-size: clamp(1.35rem, 2vw, 1.75rem);
-    font-weight: var(--font-semi-bold);
+    font-weight: 700;
     color: var(--title-color);
     letter-spacing: -0.02em;
     line-height: 1.15;
@@ -811,24 +860,26 @@ body.dark-theme .header { background-color: rgba(11, 11, 11, .82); }
 
 .project__data { display: flex; flex-direction: column; gap: 1rem; }
 
-.project__bg .section__eyebrow { color: rgba(255,255,255,.6); }
-
 .project__title {
     font-family: var(--display-font);
     font-size: var(--display-md);
-    font-weight: var(--font-semi-bold);
-    color: var(--surface);
+    font-weight: 800;
+    color: var(--bg);
     line-height: 1.02;
     letter-spacing: -0.035em;
     margin: 0;
 }
 
 .project__description {
-    color: rgba(255, 255, 255, .8);
+    color: rgba(26, 26, 230, .82);
     max-width: 44ch;
     line-height: 1.6;
     margin: 0 0 .75rem;
 }
+
+.project__bg .section__eyebrow { color: rgba(26, 26, 230, .65); }
+.project__bg .section__title { color: var(--bg); }
+.project__bg .section__title::after { background: var(--bg); }
 
 /*==================== CONTACT ====================*/
 .contact__container {
@@ -940,7 +991,7 @@ a.contact__subtitle:hover { color: var(--accent); }
 .footer__title {
     font-family: var(--display-font);
     font-size: clamp(1.85rem, 3.5vw, 2.5rem);
-    font-weight: var(--font-semi-bold);
+    font-weight: 800;
     color: var(--title-color);
     letter-spacing: -0.03em;
     line-height: 1;
