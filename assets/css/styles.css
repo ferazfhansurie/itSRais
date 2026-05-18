@@ -254,9 +254,28 @@ body.dark-theme .header { background-color: rgba(10, 10, 31, .85); }
         width: 100%;
         background-color: var(--surface);
         border-top: 1px solid var(--hairline);
-        padding: 2rem 1.5rem 4rem;
+        padding: .65rem 1rem .85rem;
         border-radius: 0;
         transition: .35s cubic-bezier(.4,0,.2,1);
+    }
+
+    .nav__list {
+        grid-template-columns: repeat(3, 1fr);
+        gap: .35rem 1rem;
+    }
+
+    .nav__link {
+        gap: .15rem;
+        font-size: .62rem;
+        letter-spacing: .12em;
+    }
+
+    .nav__icon { font-size: .95rem; }
+
+    .active-link::before {
+        width: 3px;
+        height: 3px;
+        margin-bottom: .15rem;
     }
 }
 
