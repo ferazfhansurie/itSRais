@@ -189,30 +189,34 @@ themeButton.addEventListener('click', () => {
 (function () {
     const modal = document.getElementById('video-modal');
     if (!modal) return;
-    const iframe = document.getElementById('video-modal-iframe');
+    const video = document.getElementById('video-modal-video');
     const link = document.getElementById('video-modal-link');
     const linkText = document.getElementById('video-modal-link-text');
 
-    const open = (embed, platformUrl, platform) => {
-        iframe.src = embed;
+    const open = (src, platformUrl, platform) => {
+        video.src = src;
         link.href = platformUrl;
         linkText.textContent = 'Open on ' + (platform || 'platform');
         modal.hidden = false;
         document.body.classList.add('video-modal-open');
+        const play = video.play();
+        if (play && typeof play.catch === 'function') play.catch(() => {});
     };
 
     const close = () => {
         modal.hidden = true;
-        iframe.src = '';
+        try { video.pause(); } catch (e) {}
+        video.removeAttribute('src');
+        video.load();
         document.body.classList.remove('video-modal-open');
     };
 
     document.querySelectorAll('.vcard').forEach((card) => {
         card.addEventListener('click', (e) => {
-            const embed = card.dataset.embed;
-            if (!embed) return;
+            const src = card.dataset.video;
+            if (!src) return;
             e.preventDefault();
-            open(embed, card.getAttribute('href'), card.dataset.platform);
+            open(src, card.getAttribute('href'), card.dataset.platform);
         });
     });
 
