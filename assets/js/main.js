@@ -184,3 +184,43 @@ themeButton.addEventListener('click', () => {
     localStorage.setItem('selected-theme', getCurrentTheme());
     localStorage.setItem('selected-icon', getCurrentIcon());
 });
+
+/*==================== VIDEO MODAL ====================*/
+(function () {
+    const modal = document.getElementById('video-modal');
+    if (!modal) return;
+    const iframe = document.getElementById('video-modal-iframe');
+    const link = document.getElementById('video-modal-link');
+    const linkText = document.getElementById('video-modal-link-text');
+
+    const open = (embed, platformUrl, platform) => {
+        iframe.src = embed;
+        link.href = platformUrl;
+        linkText.textContent = 'Open on ' + (platform || 'platform');
+        modal.hidden = false;
+        document.body.classList.add('video-modal-open');
+    };
+
+    const close = () => {
+        modal.hidden = true;
+        iframe.src = '';
+        document.body.classList.remove('video-modal-open');
+    };
+
+    document.querySelectorAll('.vcard').forEach((card) => {
+        card.addEventListener('click', (e) => {
+            const embed = card.dataset.embed;
+            if (!embed) return;
+            e.preventDefault();
+            open(embed, card.getAttribute('href'), card.dataset.platform);
+        });
+    });
+
+    modal.querySelectorAll('[data-close]').forEach((el) => {
+        el.addEventListener('click', close);
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && !modal.hidden) close();
+    });
+})();

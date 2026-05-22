@@ -779,6 +779,111 @@ body.dark-theme .header { background-color: rgba(10, 10, 31, .85); }
     }
 }
 
+/*==================== VIDEO MODAL ====================*/
+.video-modal {
+    position: fixed;
+    inset: 0;
+    z-index: var(--z-modal);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    animation: vm-fade .25s ease;
+}
+
+.video-modal[hidden] { display: none; }
+
+.video-modal__backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(5, 5, 30, .85);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    cursor: pointer;
+}
+
+.video-modal__inner {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+    max-width: 380px;
+    z-index: 1;
+}
+
+.video-modal__close {
+    position: absolute;
+    top: -3rem;
+    right: 0;
+    width: 2.5rem;
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--hairline);
+    border-radius: 999px;
+    background: var(--surface);
+    color: var(--title-color);
+    font-size: 1.25rem;
+    cursor: pointer;
+    transition: background .25s, transform .25s;
+}
+
+.video-modal__close:hover {
+    background: var(--accent);
+    color: var(--surface);
+    transform: rotate(90deg);
+}
+
+.video-modal__player {
+    width: 100%;
+    aspect-ratio: 9 / 16;
+    max-height: 80vh;
+    background: #000;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 24px 64px rgba(0,0,0,.45);
+}
+
+.video-modal__player iframe {
+    width: 100%;
+    height: 100%;
+    display: block;
+    border: 0;
+}
+
+.video-modal__link {
+    display: inline-flex;
+    align-items: center;
+    gap: .4rem;
+    padding: .5rem 1rem;
+    border: 1px solid var(--hairline);
+    border-radius: 999px;
+    background: var(--surface);
+    color: var(--title-color);
+    font-size: .8rem;
+    font-weight: var(--font-medium);
+    letter-spacing: .04em;
+    transition: background .25s, color .25s, border-color .25s;
+}
+
+.video-modal__link:hover {
+    background: var(--accent);
+    color: var(--surface);
+    border-color: var(--accent);
+}
+
+.video-modal__link i { font-size: .9rem; }
+
+@keyframes vm-fade {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+body.video-modal-open { overflow: hidden; }
+
 /*==================== ABOUT ====================*/
 .about__container {
     display: grid;
