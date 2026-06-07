@@ -93,7 +93,6 @@ modalCloses.forEach((modalClose) => {
 if (document.querySelector('.portfolio__container')) {
     new Swiper('.portfolio__container', {
         cssMode: true,
-        loop: true,
 
         navigation: {
             nextEl: '.swiper-button-next',
