@@ -161,6 +161,53 @@ function scrollUp() {
 }
 window.addEventListener('scroll', scrollUp);
 
+/*==================== VIDEO MODAL ====================*/
+(function () {
+    const modal = document.getElementById('video-modal');
+    if (!modal) return;
+
+    const video = document.getElementById('video-modal-video');
+    const link = document.getElementById('video-modal-link');
+    const linkText = document.getElementById('video-modal-link-text');
+
+    const open = (src, platformUrl, platform) => {
+        video.src = src;
+        link.href = platformUrl;
+        linkText.textContent = 'Open on ' + (platform || 'platform');
+        modal.hidden = false;
+        document.body.classList.add('video-modal-open');
+
+        const play = video.play();
+        if (play && typeof play.catch === 'function') play.catch(() => {});
+    };
+
+    const close = () => {
+        modal.hidden = true;
+        try { video.pause(); } catch (e) {}
+        video.removeAttribute('src');
+        video.load();
+        document.body.classList.remove('video-modal-open');
+    };
+
+    document.querySelectorAll('.vcard').forEach((card) => {
+        card.addEventListener('click', (event) => {
+            const src = card.dataset.video;
+            if (!src) return;
+
+            event.preventDefault();
+            open(src, card.getAttribute('href'), card.dataset.platform);
+        });
+    });
+
+    modal.querySelectorAll('[data-close]').forEach((element) => {
+        element.addEventListener('click', close);
+    });
+
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && !modal.hidden) close();
+    });
+})();
+
 /*==================== DARK LIGHT THEME ====================*/
 const themeButton = document.getElementById('theme-button');
 const darkTheme = 'dark-theme';
